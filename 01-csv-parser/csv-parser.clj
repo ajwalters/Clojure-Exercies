@@ -18,6 +18,6 @@
   (map keyword (parse-row header-row)))
 
 (defn parse-csv [reader]
-  (let [lines (clojure.string/split-lines (slurp reader))
+  (let [lines (str/split-lines (slurp reader))
         headers (extract-headers (first lines))]
     (map #(zipmap headers (parse-row %)) (rest lines))))
